@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y \
   libxml2-dev \
   libzip-dev \
   libonig-dev \
+  unzip \ 
+  zip \ 
   git
 
 RUN docker-php-ext-install \
