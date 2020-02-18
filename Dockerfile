@@ -27,15 +27,11 @@ COPY docker/apache/vhost.conf /etc/apache2/sites-available/000-default.conf
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=1.9.2
 
 COPY --chown=www-data:www-data project/ /var/www/html/
-RUN mkdir -p /project/bootstrap/cache \
-  mkdir -p /project/storage/framework/sessions \
-  mkdir -p /project/storage/framework/views \
-  mkdir -p /project/storage/framework/cache
-
 WORKDIR /var/www/html/
 
 RUN composer install --prefer-dist --optimize-autoloader --classmap-authoritative --no-dev --quiet
-RUN php artisan key:generate
-RUN php artisan migrate --force
 RUN chown -R www-data:www-data /var/www/html/
 EXPOSE 80
+COPY docker/docker-php-entrypoint-wrapper /usr/local/bin/
+RUN chmod 775 /usr/local/bin/docker-php-entrypoint-wrapper
+ENTRYPOINT [ "/usr/local/bin/docker-php-entrypoint-wrapper" ]
