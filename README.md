@@ -18,6 +18,24 @@ Database notes:
 
 - for a local db, use 127.0.0.1. Using 'localhost' will use unix sockets (https://stackoverflow.com/questions/20723803)
 
+### Qovery
+
+Configure your Qovery database (initial setup):
+- once the first deployment is done (git push), create the application's database on the database instance:
+  - run `qovery environment env list` to obtain the instance HOST, USERNAME, and PASSWORD
+  - connect to the instance: `mysql -u the-username-here -h the-hostname-here.rds.amazonaws.com -p`
+  - run this command to create the database: `CREATE DATABASE myappdb;`
+  - confirm it worked: `SHOW DATABASES;`
+- then edit Laravel configuration in `project/config/database.php`, under `connections`->`'mysql'`. Example (replace MYIDHERE with the ID Qovery assigned for this environment)
+```javascript
+'host' => env('QOVERY_DATABASE_MY_MYSQL_MYIDHERE_HOST', '127.0.0.1'),
+'port' => env('QOVERY_DATABASE_MY_MYSQL_MYIDHERE_PORT', '3306'),
+'database' => env('myappdb', ''),
+'username' => env('QOVERY_DATABASE_MY_MYSQL_MYIDHERE_USERNAME', ''),
+'password' => env('QOVERY_DATABASE_MY_MYSQL_MYIDHERE_PASSWORD', ''),
+```
+
+
 ## DockerFile
 
 * To deploy a custom php.ini, save it into docker/php and uncomment the corresponding COPY line in the Dockerfile.
