@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
   libjpeg62-turbo-dev \
   libmcrypt-dev \
   libpng-dev \
+  libpq-dev \
   zlib1g-dev \
   libxml2-dev \
   libzip-dev \
@@ -17,7 +18,8 @@ RUN apt-get update && apt-get install -y \
 RUN docker-php-ext-install \
   mbstring \
   pdo \
-  pdo_mysql \ 
+  pgsql \
+  pdo_pgsql \
   opcache \
   && a2enmod rewrite negotiation \
   && service apache2 restart
