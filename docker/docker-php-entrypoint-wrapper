@@ -7,5 +7,7 @@ mkdir -p storage/framework/sessions
 mkdir -p storage/framework/views
 mkdir -p storage/framework/cache
 php artisan key:generate
+env
+php artisan migrate --force -vvv
 echo "Starting server"
 exec /usr/local/bin/apache2-foreground
