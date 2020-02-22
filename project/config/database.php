@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Str;
 
+$qovery = new Qovery();
+$db = $qovery->getDatabaseByName("my-mysql-6132005");
+
 return [
 
     /*
@@ -45,12 +48,12 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'url' => env('DATABASE_URL'),
-            'host' => env('QOVERY_DATABASE_MY_MYSQL_6132005_HOST', '127.0.0.1'), // DB_HOST
-            'port' => env('QOVERY_DATABASE_MY_MYSQL_6132005_PORT', '3306'), // DB_PORT
-            'database' => env('myappdb', ''), // DB_DATABASE
-            'username' => env('QOVERY_DATABASE_MY_MYSQL_6132005_USERNAME', ''), // DB_USERNAME
-            'password' => env('QOVERY_DATABASE_MY_MYSQL_6132005_PASSWORD', ''), // DB_PASSWORD
+            'url' => '',
+            'host' => $db->host,
+            'port' => $db->port,
+            'database' => 'myappdb',
+            'username' => $db->username,
+            'password' => $db->password,
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

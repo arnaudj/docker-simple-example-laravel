@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3bb4dacacf43532a01bf1d3d6dd3bbe1",
+    "content-hash": "c1d40fe6c16b4afe33e1b52b0502dfa1",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1433,6 +1433,50 @@
                 "shell"
             ],
             "time": "2019-12-06T14:19:43+00:00"
+        },
+        {
+            "name": "qovery/qovery-client",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Qovery/qovery-php-client.git",
+                "reference": "c66840163fcb2a06ee3f3dd22bbee26f848cfc75"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Qovery/qovery-php-client/zipball/c66840163fcb2a06ee3f3dd22bbee26f848cfc75",
+                "reference": "c66840163fcb2a06ee3f3dd22bbee26f848cfc75",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7"
+            },
+            "require-dev": {
+                "php": "^5.6 || ^7",
+                "phpunit/phpunit": "^5"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache License 2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Qovery",
+                    "email": "rphilogene@qovery.com",
+                    "homepage": "https://qovery.com"
+                },
+                {
+                    "name": "Arnaud J"
+                }
+            ],
+            "description": "Client for Qovery",
+            "time": "2020-01-20T08:53:07+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -5045,7 +5089,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "qovery/qovery-client": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
